@@ -4,6 +4,7 @@ import { RecoilRoot } from "recoil";
 import Formulario from "./Formulario";
 
 
+
 describe('o comportamento do Formulario.tsx', () => {
     test('quando o input está vazio, novos participantes não podem ser adicionados', () => {
         render(
