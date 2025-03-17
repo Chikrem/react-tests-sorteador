@@ -1,15 +1,21 @@
 import React, { useRef, useState } from 'react';
+import { useAdicionaNaLista } from '../state/hooks/adicionarParticipante';
 
 const Formulario = () => {
-    const [participantes, setParticipantes] = useState<string[]>([]);
+
+    // Guardar nome recebido do input form
     const [nome, setNome] = useState<string>('');
+
+    // Recuperar o método de adição na lista com hook personalizado
+    const AdicionaNaLista = useAdicionaNaLista();
 
     const inputRef = useRef<HTMLInputElement>(null)
 
+    // Função para passar o nome guardado ao método de adição e adicionar novo valor a lista
     const adicionarParticipante = (event: React.FormEvent) => {
         event.preventDefault();
         if (nome.trim()) {
-            setParticipantes([...participantes, nome]);
+            AdicionaNaLista(nome);
             setNome('');
             inputRef.current?.focus()
         }
