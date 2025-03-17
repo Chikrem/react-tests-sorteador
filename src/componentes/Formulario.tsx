@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { useAdicionaNaLista } from '../state/hooks/adicionarParticipante';
+import { useAdicionaNaLista } from '../state/hooks/useAdicionarParticipante';
+import { useMensagemDeErro } from '../state/hooks/useMsgErro';
 
 const Formulario = () => {
 
@@ -21,6 +22,8 @@ const Formulario = () => {
         }
     };
 
+    const mensagemDeErro = useMensagemDeErro()
+
     return (
         <form onSubmit={adicionarParticipante}>
             <input
@@ -31,6 +34,7 @@ const Formulario = () => {
                 onChange={(e) => setNome(e.target.value)}
             />
             <button type="submit" disabled={!nome.trim()}>Adicionar</button>
+            {mensagemDeErro && <p role="alert">{mensagemDeErro}</p>}
         </form>
     );
 };
