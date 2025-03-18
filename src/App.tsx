@@ -1,9 +1,17 @@
-// Início Aula-4
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import Configuracao from './paginas/Configuracao';
 
 function App() {
   return (
-    <h2> teste </h2>
+    <BrowserRouter>
+      <RecoilRoot>
+        <Routes>
+          <Route path='/' element={<Configuracao />}/>
+        </Routes>
+      </RecoilRoot>
+    </BrowserRouter>
   );
 }
 
